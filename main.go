@@ -1,8 +1,8 @@
 package main
 
 import (
-	"log"
 	"log/slog"
+	"net/http"
 )
 
 const (
@@ -21,7 +21,6 @@ func main() {
 
 func handlerWs(w http.ResponseWriter, r *http.Request) {
 	ws, err := NewWebsocket(w, r)
-
 	if err != nil {
 		log.Print(err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
